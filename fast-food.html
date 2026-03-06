@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4cups | Gamme Fast-food</title>
+    <meta name="description"
+        content="Découvrez notre gamme d'emballages pour fast-food : boîtes à burger, frites et sacs kraft.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            important: '.tailwind-scope',
+            corePlugins: { preflight: false },
+            darkMode: ["class"],
+            theme: {
+                container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+                extend: {
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(35 20% 88%)",
+                        input: "hsl(35 20% 88%)",
+                        ring: "hsl(145 35% 32%)",
+                        background: "hsl(40 33% 97%)",
+                        foreground: "hsl(30 10% 15%)",
+                        primary: { DEFAULT: "hsl(145 35% 32%)", foreground: "hsl(40 33% 97%)" },
+                        secondary: { DEFAULT: "hsl(30 30% 88%)", foreground: "hsl(30 10% 15%)" },
+                        muted: { DEFAULT: "hsl(35 20% 92%)", foreground: "hsl(30 8% 50%)" },
+                        accent: { DEFAULT: "hsl(28 60% 58%)", foreground: "hsl(40 33% 97%)" },
+                        card: { DEFAULT: "hsl(40 25% 95%)", foreground: "hsl(30 10% 15%)" },
+                    },
+                    borderRadius: { lg: "0.75rem", md: "calc(0.75rem - 2px)", sm: "calc(0.75rem - 4px)" }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <style>
+        /* === NAVBAR OVERRIDES - Force match with index.html === */
+
+        /* Nav container */
+        .tailwind-scope,
+        .tailwind-scope nav,
+        .tailwind-scope nav *,
+        .tailwind-scope nav a,
+        .tailwind-scope nav ul,
+        .tailwind-scope nav ul li,
+        .tailwind-scope nav ul li a,
+        .tailwind-scope nav button,
+        .tailwind-scope nav div {
+            box-sizing: border-box !important;
+        }
+
+        .tailwind-scope nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 50 !important;
+            background: hsl(40, 33%, 97%) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid hsl(35, 20%, 88%) !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+        }
+
+        .tailwind-scope nav>div {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            height: 5rem !important;
+        }
+
+        /* Logo */
+        .tailwind-scope nav>div>a:first-child {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.875rem !important;
+            font-weight: 700 !important;
+            color: hsl(145, 35%, 32%) !important;
+            letter-spacing: -0.025em !important;
+            text-decoration: none !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Remove ALL underlines and pseudo-elements from nav links */
+        .tailwind-scope nav a::before,
+        .tailwind-scope nav a::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* All navigation links */
+        .tailwind-scope nav ul {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 2rem !important;
+        }
+
+        .tailwind-scope nav ul li {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .tailwind-scope nav ul li::before,
+        .tailwind-scope nav ul li::after,
+        .tailwind-scope nav ul li::marker {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* ALL links inside nav ul must use DM Sans at 14px */
+        .tailwind-scope nav ul li a {
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+            color: hsl(30, 8%, 50%) !important;
+            text-decoration: none !important;
+            line-height: 1.5 !important;
+            letter-spacing: normal !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            position: static !important;
+            display: inline !important;
+        }
+
+        .tailwind-scope nav ul li a:hover {
+            color: hsl(145, 35%, 32%) !important;
+        }
+
+        /* CTA button - "Demander un devis" */
+        .tailwind-scope nav ul li a.cta-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            padding: 0.625rem 1.25rem !important;
+            border-radius: 9999px !important;
+            background-color: hsl(145, 35%, 32%) !important;
+            color: hsl(40, 33%, 97%) !important;
+            font-size: 0.875rem !important;
+            font-weight: 600 !important;
+            font-family: 'DM Sans', sans-serif !important;
+        }
+
+        .tailwind-scope nav ul li a.cta-btn:hover {
+            opacity: 0.9 !important;
+            color: hsl(40, 33%, 97%) !important;
+        }
+
+        /* Mobile button */
+        .tailwind-scope nav button {
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            cursor: pointer !important;
+            color: hsl(30, 10%, 15%) !important;
+        }
+
+        /* Mobile menu panel */
+        .tailwind-scope nav>div:last-of-type ul {
+            flex-direction: column !important;
+        }
+
+
+        /* Force hide mobile menu by default */
+        .tailwind-scope #tailwind-mobile-menu {
+            display: none !important;
+        }
+
+        .tailwind-scope #tailwind-mobile-menu.show {
+            display: block !important;
+        }
+
+        /* Hide mobile button on desktop */
+        .tailwind-scope nav button#tailwind-mobile-btn {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .tailwind-scope nav button#tailwind-mobile-btn {
+                display: block !important;
+            }
+
+            .tailwind-scope nav ul.hidden {
+                display: none !important;
+            }
+        }
+
+        /* Body background to match index.html warm cream */
+        :root {
+            --bg-color: #f7f3ed !important;
+            /* hsl(40, 33%, 97%) converted */
+        }
+
+        body {
+            background-color: #f7f3ed !important;
+        }
+
+        /* Body padding for fixed nav */
+        body {
+            padding-top: 5rem !important;
+        }
+
+        /* === FOOTER & CONTACT OVERRIDES === */
+        .tailwind-scope section {
+            padding-top: 6rem !important;
+            padding-bottom: 8rem !important;
+        }
+
+        .tailwind-scope footer {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="tailwind-scope">
+        <!-- Navbar -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+            <div class="container flex items-center justify-between h-16 md:h-20">
+                <a href="index.html" class="flex items-center" style="height: 100%;">
+                    <img src="assets/logo.png" alt="4CUPS Logo"
+                        style="height: 4.5rem; width: auto; object-fit: contain; max-height: 120%; margin: -0.5rem 0;">
+                </a>
+
+                <!-- Desktop -->
+                <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+                    <li><a href="index.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Accueil</a>
+                    </li>
+                    <li><a href="cafe.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Café</a>
+                    </li>
+                    <li><a href="restaurants.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Restaurants</a>
+                    </li>
+                    <li><a href="fast-food.html"
+                            class="font-body text-sm font-medium text-primary hover:text-primary transition-colors">Fast-Food</a>
+                    </li>
+                    <li><a href="glaciers.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Glaciers</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity cta-btn">
+                            Demander un devis
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile toggle -->
+                <button id="tailwind-mobile-btn" class="md:hidden text-foreground" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="tailwind-mobile-menu"
+                class="hidden md:hidden bg-background border-b border-border overflow-hidden transition-all duration-300">
+                <ul class="flex flex-col gap-4 px-6 py-6 border-t border-border list-none m-0 p-0">
+                    <li><a href="index.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Accueil</a>
+                    </li>
+                    <li><a href="cafe.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Café</a>
+                    </li>
+                    <li><a href="restaurants.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Restaurants</a>
+                    </li>
+                    <li><a href="fast-food.html"
+                            class="font-body text-base text-primary hover:text-primary transition-colors">Fast-Food</a>
+                    </li>
+                    <li><a href="glaciers.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Glaciers</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                            Demander un devis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Category Hero -->
+    <header class="category-hero hero-fastfood">
+        <div class="bg-gradient-1"></div>
+        <div class="container fade-in-up">
+            <div class="badge">Efficacité et Rapidité</div>
+            <h1>Gamme <span class="highlight">Fast-food</span></h1>
+            <p>Emballages anti-graisse, robustes et pratiques pour la restauration rapide.</p>
+        </div>
+    </header>
+
+
+
+
+    <!-- Specific Products -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header fade-in-up" style="margin-bottom: 2rem;">
+                <h2>Boîtes et Emballages Fast-Food - 4CUPS</h2>
+                <p>Emballage de qualité premium, fabriqué localement. Des solutions adaptées à tous vos besoins.</p>
+                <div class="category-badges">
+                    <div class="spec-badge">✅ Min: 10000 pcs</div>
+                    <div class="spec-badge">🖌️ Logo Personnalisable</div>
+                    <div class="spec-badge">🏭 Made in Morocco</div>
+                </div>
+            </div>
+
+            <!-- Rubrique Barquettes & Emballages -->
+            <div class="section-subheader fade-in-up" style="text-align: center; margin-bottom: 2rem;">
+                <h3
+                    style="font-size: 1.8rem; font-weight: bold; color: var(--foreground); font-family: var(--font-display);">
+                    Barquettes & Emballages</h3>
+            </div>
+
+            <div class="detailed-product-grid">
+
+
+            </div>
+
+
+
+            <div class="detailed-product-grid">
+
+                <!-- Barquette Alimentaire 500ml -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.7s;">
+                    <div class="detailed-image">
+                        <img src="assets/barquettes_kraft.png" alt="Barquette kraft alimentaire"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Barquette 500ml</h3>
+                        <div class="capacity-subtitle">Barquette Alimentaire Kraft</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Contenance:</td>
+                                <td>500 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>45 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>150×100 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>130×80 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Barquette kraft résistante pour plats à emporter. Excellente tenue à la
+                            chaleur.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Barquettes%20500ml."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Barquette 750ml -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.8s;">
+                    <div class="detailed-image">
+                        <img src="assets/barquettes_kraft.png" alt="Barquette kraft alimentaire"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Barquette 750ml</h3>
+                        <div class="capacity-subtitle">Format Standard</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Contenance:</td>
+                                <td>750 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>55 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>170×120 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>150×100 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Format standard pour les plats principaux. Compatibilité micro-ondes
+                            disponible sur demande.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Barquettes%20750ml."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Barquette 1000ml -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.9s;">
+                    <div class="detailed-image">
+                        <img src="assets/barquettes_kraft.png" alt="Barquette kraft alimentaire"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Barquette 1000ml</h3>
+                        <div class="capacity-subtitle">Grand Format</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Contenance:</td>
+                                <td>1000 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>65 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>190×130 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>170×110 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Grand format pour les repas généreux et plateaux partagés. Idéal pour
+                            la restauration collective.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Barquettes%201000ml."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <!-- Barquette Frite -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 1.3s;">
+                    <div class="detailed-image">
+                        <img src="assets/barquette_frites.jpg" alt="Barquette à frites kraft"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Barquette à Frites</h3>
+                        <div class="capacity-subtitle">Idéal pour Frites & Snacks</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Format:</td>
+                                <td>Standard ou Grand</td>
+                            </tr>
+                            <tr>
+                                <td>Matériau:</td>
+                                <td>Carton ingraissable premium</td>
+                            </tr>
+                            <tr>
+                                <td>Design:</td>
+                                <td>Prise en main ergonomique</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Emballage pratique et résistant aux graisses, conçu pour maintenir la
+                            chaleur et le croustillant de vos frites.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Barquettes%20à%20Frites."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Papier sandwich/burger -->
+                <div class="detailed-card group fade-in-up" style="transition-delay: 1.35s;">
+                    <div class="detailed-image" style="background: transparent; padding: 1.5rem;">
+                        <img src="assets/papier_sandwich_v4_new.jpg" alt="Papier sandwich/burger personnalisé"
+                            style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: cover; object-position: center; border-radius: 8px;">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Papier Sandwich / Burger</h3>
+                        <div class="capacity-subtitle">Papier Ingraissable Personnalisé</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Usage:</td>
+                                <td>Burgers, wraps, sandwichs</td>
+                            </tr>
+                            <tr>
+                                <td>Propriété:</td>
+                                <td>Ingraissable & Résistant</td>
+                            </tr>
+                            <tr>
+                                <td>Personnalisable:</td>
+                                <td>100% avec votre logo</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Mettez en valeur vos burgers avec un papier d'emballage ingraissable
+                            sur-mesure imprimé à vos couleurs.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20du%20Papier%20Sandwich%20Burger."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Saladier 500 ml -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 1.4s;">
+                    <div class="detailed-image">
+                        <img src="assets/saladier_4cups.png" alt="Saladier 500 ml"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Saladier 500 ml</h3>
+                        <div class="capacity-subtitle">500 ml</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité :</td>
+                                <td>500 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Fond :</td>
+                                <td>130 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur :</td>
+                                <td>50 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Supérieur :</td>
+                                <td>150 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Parfait pour glaces, desserts et portions standards. Avec couvercle.
+                        </p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Saladiers%20500%20ml."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Saladier 750 ml -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 1.5s;">
+                    <div class="detailed-image">
+                        <img src="assets/saladier_4cups.png" alt="Saladier 750 ml"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Saladier 750 ml</h3>
+                        <div class="capacity-subtitle">750 ml</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité :</td>
+                                <td>750 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Fond :</td>
+                                <td>130 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur :</td>
+                                <td>65 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Supérieur :</td>
+                                <td>150 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Parfait pour glaces, desserts et portions standards. Avec couvercle.
+                        </p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Saladiers%20750%20ml."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Saladier 1000 ml -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 1.6s;">
+                    <div class="detailed-image">
+                        <img src="assets/saladier_4cups.png" alt="Saladier 1000 ml"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Saladier 1000 ml</h3>
+                        <div class="capacity-subtitle">1000 ml</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité :</td>
+                                <td>1000 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Fond :</td>
+                                <td>130 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur :</td>
+                                <td>80 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Supérieur :</td>
+                                <td>150 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Parfait pour glaces, desserts et portions standards. Avec couvercle.
+                        </p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Saladiers%201000%20ml."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Rubrique Porte-Sauces -->
+        <div class="section-subheader fade-in-up" style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
+            <h3
+                style="font-size: 1.8rem; font-weight: bold; color: var(--foreground); font-family: var(--font-display);">
+                Gamme Porte-Sauces</h3>
+        </div>
+
+        <div class="detailed-product-grid" style="margin-bottom: 4rem;">
+
+            <!-- Porte-sauce 30ml -->
+            <div class="detailed-card fade-in-up" style="transition-delay: 0.4s;">
+                <div class="detailed-image">
+                    <span style="color:var(--text-secondary); font-size:4rem;">🥣</span>
+                </div>
+                <div class="detailed-info">
+                    <h3>Porte-sauce 30ml</h3>
+                    <div class="capacity-subtitle">Petits contenants kraft</div>
+                    <table class="spec-table">
+                        <tr>
+                            <td>Contenance:</td>
+                            <td>30 ml</td>
+                        </tr>
+                        <tr>
+                            <td>Hauteur:</td>
+                            <td>30 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Ø Haut:</td>
+                            <td>50 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Ø Base:</td>
+                            <td>38 mm</td>
+                        </tr>
+                    </table>
+                    <p class="detailed-desc">Petits contenants papier kraft pour ketchup, mayonnaise et sauces.
+                        Eco-responsable.</p>
+                    <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Porte-sauces%2030ml."
+                        target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+            </div>
+
+            <!-- Porte-sauce 60ml -->
+            <div class="detailed-card fade-in-up" style="transition-delay: 0.5s;">
+                <div class="detailed-image">
+                    <span style="color:var(--text-secondary); font-size:4rem;">🥣</span>
+                </div>
+                <div class="detailed-info">
+                    <h3>Porte-sauce 60ml</h3>
+                    <div class="capacity-subtitle">Format moyen</div>
+                    <table class="spec-table">
+                        <tr>
+                            <td>Contenance:</td>
+                            <td>60 ml</td>
+                        </tr>
+                        <tr>
+                            <td>Hauteur:</td>
+                            <td>35 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Ø Haut:</td>
+                            <td>60 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Ø Base:</td>
+                            <td>45 mm</td>
+                        </tr>
+                    </table>
+                    <p class="detailed-desc">Format idéal pour les sauces en portion individuelle. Parfait pour
+                        hamburgers et wraps.</p>
+                    <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Porte-sauces%2060ml."
+                        target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+            </div>
+
+            <!-- Porte-sauce 90ml -->
+            <div class="detailed-card fade-in-up" style="transition-delay: 0.6s;">
+                <div class="detailed-image">
+                    <span style="color:var(--text-secondary); font-size:4rem;">🥣</span>
+                </div>
+                <div class="detailed-info">
+                    <h3>Porte-sauce 90ml</h3>
+                    <div class="capacity-subtitle">Grand format</div>
+                    <table class="spec-table">
+                        <tr>
+                            <td>Contenance:</td>
+                            <td>90 ml</td>
+                        </tr>
+                        <tr>
+                            <td>Hauteur:</td>
+                            <td>40 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Ø Haut:</td>
+                            <td>68 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Ø Base:</td>
+                            <td>50 mm</td>
+                        </tr>
+                    </table>
+                    <p class="detailed-desc">Grand format pour les accompagnements généreux. Idéal pour les plats à
+                        partager.</p>
+                    <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Porte-sauces%2090ml."
+                        target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="container" style="padding-top: 0;">
+        <div class="category-features fade-in-up">
+            <div class="feature-item">
+                <span class="feature-icon">✨</span>
+                <h3>Qualité Premium</h3>
+                <p>Matériaux robustes et certifiés alimentaires pour une utilisation optimale.</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📏</span>
+                <h3>Formats Variés</h3>
+                <p>Large gamme de tailles pour répondre à tous vos besoins professionnels.</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🚚</span>
+                <h3>Livraison Rapide</h3>
+                <p>Production locale et logistique efficace partout au Maroc.</p>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="tailwind-scope">
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 md:py-32 bg-background">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-body font-medium mb-4">Contact</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">Parlons de votre projet
+                    </h2>
+                    <p class="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
+                        Besoin d'un devis personnalisé ? Contactez-nous et nous vous répondrons dans les plus brefs
+                        délais.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
+                    <div class="lg:col-span-2 flex flex-col gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Email</h4>
+                                <p class="font-body text-sm text-muted-foreground">4cupsmaroc@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Téléphone</h4>
+                                <p class="font-body text-sm text-muted-foreground">+212 661 17 76 24<br />+212 522 33 44
+                                    44</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Adresse</h4>
+                                <p class="font-body text-sm text-muted-foreground">Centre Ville<br />Bouskoura, Maroc
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="lg:col-span-3 flex flex-col gap-5" action="https://formsubmit.co/4cupsmaroc@gmail.com"
+                        method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <input type="text" placeholder="Nom"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="nom" id="nom">
+                            <input type="email" placeholder="Email"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="email" id="email">
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <input type="tel" placeholder="Numéro de téléphone"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="telephone" id="telephone">
+                        </div>
+                        <textarea rows="5" placeholder="Votre message (optionnel)..."
+                            class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                            name="message" id="message"></textarea>
+                        <button type="submit"
+                            class="self-start px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer class="py-12 bg-foreground">
+            <div class="container">
+                <div class="grid md:grid-cols-3 gap-10 mb-10">
+                    <div>
+                        <h3 class="font-heading text-2xl font-bold text-primary-foreground mb-3">4cups</h3>
+                        <p class="font-body text-sm text-primary-foreground/60 max-w-xs leading-relaxed">
+                            Emballages alimentaires de qualité pour les professionnels. Gobelets, pots de glaces,
+                            barquettes
+                            et plus.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-base font-semibold text-primary-foreground mb-4">Liens rapides</h4>
+                        <ul class="flex flex-col gap-2">
+                            <li><a href="index.html"
+                                    class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Accueil</a>
+                            </li>
+                            <li><a href="#apropos"
+                                    class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">À
+                                    propos</a></li>
+                            <li><a href="#contact"
+                                    class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-base font-semibold text-primary-foreground mb-4">Nous contacter
+                        </h4>
+                        <p class="font-body text-sm text-primary-foreground/60 leading-relaxed">
+                            4cupsmaroc@gmail.com<br />
+                            +212 661 17 76 24<br />
+                            +212 522 33 44 44<br />
+                            Bouskoura, Maroc
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-primary-foreground/10 pt-8 text-center flex flex-col items-center">
+                    <p class="font-body text-xs text-primary-foreground/40 mb-2">
+                        © 2026 4cups. Tous droits réservés.
+                    </p>
+                    <p class="font-body text-xs text-primary-foreground/20">
+                        Créé avec amour pour le Maroc.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const icon = mobileBtn.querySelector("i");
+
+            let isOpen = false;
+            mobileBtn.addEventListener("click", () => {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    mobileMenu.classList.add("show");
+                    icon.setAttribute("data-lucide", "x");
+                } else {
+                    mobileMenu.classList.remove("show");
+                    icon.setAttribute("data-lucide", "menu");
+                }
+                lucide.createIcons();
+            });
+
+            // Close mobile menu when clicking a link
+            const links = mobileMenu.querySelectorAll("a");
+            links.forEach(link => {
+                link.addEventListener("click", () => {
+                    isOpen = false;
+                    mobileMenu.classList.remove("show");
+                    icon.setAttribute("data-lucide", "menu");
+                    lucide.createIcons();
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // /* Tailwind Mobile Menu Logic */
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("tailwind-mobile-btn");
+            const mobileMenu = document.getElementById("tailwind-mobile-menu");
+            if (mobileBtn && mobileMenu) {
+                const icon = mobileBtn.querySelector("i");
+                let isOpen = false;
+                mobileBtn.addEventListener("click", () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.classList.add("show");
+                        if (icon) icon.setAttribute("data-lucide", "x");
+                    } else {
+                        mobileMenu.classList.remove("show");
+                        if (icon) icon.setAttribute("data-lucide", "menu");
+                    }
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

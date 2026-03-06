@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4cups | Gamme Café et Coffee Shops</title>
+    <meta name="description"
+        content="Découvrez notre gamme d'emballages pour cafés : gobelets, touillettes et porte-gobelets.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            important: '.tailwind-scope',
+            corePlugins: { preflight: false },
+            darkMode: ["class"],
+            theme: {
+                container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+                extend: {
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(35 20% 88%)",
+                        input: "hsl(35 20% 88%)",
+                        ring: "hsl(145 35% 32%)",
+                        background: "hsl(40 33% 97%)",
+                        foreground: "hsl(30 10% 15%)",
+                        primary: { DEFAULT: "hsl(145 35% 32%)", foreground: "hsl(40 33% 97%)" },
+                        secondary: { DEFAULT: "hsl(30 30% 88%)", foreground: "hsl(30 10% 15%)" },
+                        muted: { DEFAULT: "hsl(35 20% 92%)", foreground: "hsl(30 8% 50%)" },
+                        accent: { DEFAULT: "hsl(28 60% 58%)", foreground: "hsl(40 33% 97%)" },
+                        card: { DEFAULT: "hsl(40 25% 95%)", foreground: "hsl(30 10% 15%)" },
+                    },
+                    borderRadius: { lg: "0.75rem", md: "calc(0.75rem - 2px)", sm: "calc(0.75rem - 4px)" }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <style>
+        /* === NAVBAR OVERRIDES - Force match with index.html === */
+
+        /* Nav container */
+        .tailwind-scope,
+        .tailwind-scope nav,
+        .tailwind-scope nav *,
+        .tailwind-scope nav a,
+        .tailwind-scope nav ul,
+        .tailwind-scope nav ul li,
+        .tailwind-scope nav ul li a,
+        .tailwind-scope nav button,
+        .tailwind-scope nav div {
+            box-sizing: border-box !important;
+        }
+
+        .tailwind-scope nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 50 !important;
+            background: hsl(40, 33%, 97%) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid hsl(35, 20%, 88%) !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+        }
+
+        .tailwind-scope nav>div {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 2rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            height: 5rem !important;
+        }
+
+        /* Logo */
+        .tailwind-scope nav>div>a:first-child {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 1.875rem !important;
+            font-weight: 700 !important;
+            color: hsl(145, 35%, 32%) !important;
+            letter-spacing: -0.025em !important;
+            text-decoration: none !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Remove ALL underlines and pseudo-elements from nav links */
+        .tailwind-scope nav a::before,
+        .tailwind-scope nav a::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* All navigation links */
+        .tailwind-scope nav ul {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 2rem !important;
+        }
+
+        .tailwind-scope nav ul li {
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .tailwind-scope nav ul li::before,
+        .tailwind-scope nav ul li::after,
+        .tailwind-scope nav ul li::marker {
+            display: none !important;
+            content: none !important;
+        }
+
+        /* ALL links inside nav ul must use DM Sans at 14px */
+        .tailwind-scope nav ul li a {
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+            color: hsl(30, 8%, 50%) !important;
+            text-decoration: none !important;
+            line-height: 1.5 !important;
+            letter-spacing: normal !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            position: static !important;
+            display: inline !important;
+        }
+
+        .tailwind-scope nav ul li a:hover {
+            color: hsl(145, 35%, 32%) !important;
+        }
+
+        /* CTA button - "Demander un devis" */
+        .tailwind-scope nav ul li a.cta-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            padding: 0.625rem 1.25rem !important;
+            border-radius: 9999px !important;
+            background-color: hsl(145, 35%, 32%) !important;
+            color: hsl(40, 33%, 97%) !important;
+            font-size: 0.875rem !important;
+            font-weight: 600 !important;
+            font-family: 'DM Sans', sans-serif !important;
+        }
+
+        .tailwind-scope nav ul li a.cta-btn:hover {
+            opacity: 0.9 !important;
+            color: hsl(40, 33%, 97%) !important;
+        }
+
+        /* Mobile button */
+        .tailwind-scope nav button {
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            cursor: pointer !important;
+            color: hsl(30, 10%, 15%) !important;
+        }
+
+        /* Mobile menu panel */
+        .tailwind-scope nav>div:last-of-type ul {
+            flex-direction: column !important;
+        }
+
+
+        /* Force hide mobile menu by default */
+        .tailwind-scope #tailwind-mobile-menu {
+            display: none !important;
+        }
+
+        .tailwind-scope #tailwind-mobile-menu.show {
+            display: block !important;
+        }
+
+        /* Hide mobile button on desktop */
+        .tailwind-scope nav button#tailwind-mobile-btn {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .tailwind-scope nav button#tailwind-mobile-btn {
+                display: block !important;
+            }
+
+            .tailwind-scope nav ul.hidden {
+                display: none !important;
+            }
+        }
+
+        /* Body background to match index.html warm cream */
+        :root {
+            --bg-color: #f7f3ed !important;
+            /* hsl(40, 33%, 97%) converted */
+        }
+
+        body {
+            background-color: #f7f3ed !important;
+        }
+
+        /* Body padding for fixed nav */
+        body {
+            padding-top: 5rem !important;
+        }
+
+        /* === FOOTER & CONTACT OVERRIDES === */
+        .tailwind-scope section {
+            padding-top: 6rem !important;
+            padding-bottom: 8rem !important;
+        }
+
+        .tailwind-scope footer {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="tailwind-scope">
+        <!-- Navbar -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+            <div class="container flex items-center justify-between h-16 md:h-20">
+                <a href="index.html" class="flex items-center" style="height: 100%;">
+                    <img src="assets/logo.png" alt="4CUPS Logo"
+                        style="height: 4.5rem; width: auto; object-fit: contain; max-height: 120%; margin: -0.5rem 0;">
+                </a>
+
+                <!-- Desktop -->
+                <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+                    <li><a href="index.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Accueil</a>
+                    </li>
+                    <li><a href="cafe.html"
+                            class="font-body text-sm font-medium text-primary hover:text-primary transition-colors">Café</a>
+                    </li>
+                    <li><a href="restaurants.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Restaurants</a>
+                    </li>
+                    <li><a href="fast-food.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Fast-Food</a>
+                    </li>
+                    <li><a href="glaciers.html"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Glaciers</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity cta-btn">
+                            Demander un devis
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile toggle -->
+                <button id="tailwind-mobile-btn" class="md:hidden text-foreground" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="tailwind-mobile-menu"
+                class="hidden md:hidden bg-background border-b border-border overflow-hidden transition-all duration-300">
+                <ul class="flex flex-col gap-4 px-6 py-6 border-t border-border list-none m-0 p-0">
+                    <li><a href="index.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Accueil</a>
+                    </li>
+                    <li><a href="cafe.html"
+                            class="font-body text-base text-primary hover:text-primary transition-colors">Café</a></li>
+                    <li><a href="restaurants.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Restaurants</a>
+                    </li>
+                    <li><a href="fast-food.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Fast-Food</a>
+                    </li>
+                    <li><a href="glaciers.html"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Glaciers</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="font-body text-base text-foreground hover:text-primary transition-colors">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                            Demander un devis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Category Hero -->
+    <header class="category-hero hero-cafe">
+        <div class="bg-gradient-1"></div>
+        <div class="container fade-in-up">
+            <div class="badge">Pour les professionnels du Café</div>
+            <h1>Gamme <span class="highlight">Café & Coffee Shops</span></h1>
+            <p>L'emballage parfait pour la pause café de vos clients. Résistance thermique et design premium.</p>
+        </div>
+    </header>
+
+
+
+
+    <!-- Specific Products -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header fade-in-up" style="margin-bottom: 2rem;">
+                <h2>Gobelets en Carton Professionnels - 4CUPS</h2>
+                <p>Emballage de qualité premium, fabriqué localement. Des solutions adaptées à tous vos besoins.</p>
+                <div class="category-badges">
+                    <div class="spec-badge">✅ Min: 10000 pcs</div>
+                    <div class="spec-badge">🖌️ Logo Personnalisable</div>
+                    <div class="spec-badge">🏭 Made in Morocco</div>
+                </div>
+            </div>
+
+            <!-- Detailed Products Grid -->
+            <div class="detailed-product-grid">
+
+                <!-- Gobelet 4 oz -->
+                <div class="detailed-card fade-in-up">
+                    <div class="detailed-image">
+                        <!-- Placeholder pour l'image -->
+                        <img src="assets/gobelet_4oz.png" alt="Gobelet 4oz avec dimensions"
+                            class="w-full h-full object-contain p-0 origin-bottom"
+                            style="transform: scale(0.8); transform-origin: bottom;">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Gobelet 4 oz</h3>
+                        <div class="capacity-subtitle">Capacité: 100 ml</div>
+
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité:</td>
+                                <td>4 oz ≈ 100 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>60 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø du haut:</td>
+                                <td>64 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø de la base:</td>
+                                <td>45 mm</td>
+                            </tr>
+                        </table>
+
+                        <p class="detailed-desc">Format compact idéal pour les expressos et petites portions. Pratique
+                            et économique.</p>
+
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Gobelets%204%20oz."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gobelet 6 oz -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="detailed-image">
+                        <img src="assets/gobelet_6oz.png" alt="Gobelet 6 oz blanc"
+                            class="w-full h-full object-contain p-0 origin-bottom"
+                            style="transform: scale(0.95); transform-origin: bottom;">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Gobelet 6 oz</h3>
+                        <div class="capacity-subtitle">Capacité: 150 ml</div>
+
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité:</td>
+                                <td>6 oz ≈ 150 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>80 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø du haut:</td>
+                                <td>72 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø de la base:</td>
+                                <td>53 mm</td>
+                            </tr>
+                        </table>
+
+                        <p class="detailed-desc">Parfait pour les cappuccinos et boissons moyennes. Excellente prise en
+                            main.</p>
+
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Gobelets%206%20oz."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gobelet 8 oz -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="detailed-image">
+                        <img src="assets/gobelet_8oz.png" alt="Gobelet 8 oz blanc"
+                            class="w-full h-full object-contain p-0 origin-bottom" style="transform: scale(1.25);">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Gobelet 8 oz</h3>
+                        <div class="capacity-subtitle">Capacité: 200 ml</div>
+
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité:</td>
+                                <td>8 oz ≈ 200 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>92 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø du haut:</td>
+                                <td>75 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø de la base:</td>
+                                <td>53 mm</td>
+                            </tr>
+                        </table>
+
+                        <p class="detailed-desc">Taille standard polyvalente pour cafés et boissons chaudes. Le plus
+                            populaire.</p>
+
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Gobelets%208%20oz."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gobelet 12 oz -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="detailed-image">
+                        <img src="assets/gobelet_12oz.png" alt="Gobelet 12 oz blanc"
+                            class="w-full h-full object-contain p-0 origin-bottom" style="transform: scale(1.4);">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Gobelet 12 oz</h3>
+                        <div class="capacity-subtitle">Capacité: 350 ml</div>
+
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité:</td>
+                                <td>12 oz ≈ 350 ml</td>
+                            </tr>
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>120 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø du haut:</td>
+                                <td>80 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø de la base:</td>
+                                <td>53 mm</td>
+                            </tr>
+                        </table>
+
+                        <p class="detailed-desc">Grand format pour les boissons généreuses et frappés. Robuste et
+                            élégant.</p>
+
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Gobelets%2012%20oz."
+                            target="_blank" class="btn-whatsapp">
+                            💬 Commander
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Couvercles -->
+    <section class="products overflow-hidden" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header fade-in-up" style="margin-bottom: 2rem;">
+                <h2>Gamme Couvercles - 4CUPS</h2>
+                <p>Couvercles adaptés et sécurisés pour notre gamme de gobelets.</p>
+                <div class="category-badges">
+                    <div class="spec-badge">✅ Anti-renversement</div>
+                    <div class="spec-badge">🌡️ Haute résistance thermique</div>
+                </div>
+            </div>
+
+            <!-- Detailed Products Grid -->
+            <div class="detailed-product-grid">
+                <!-- Couvercles pour Gobelets -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.4s;">
+                    <div class="detailed-image">
+                        <img src="assets/couvercle_noir.png" alt="Couvercle noir pour gobelet"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Couvercle 72mm</h3>
+                        <div class="capacity-subtitle">Pour Gobelets 4 oz</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>8 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>72 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>72 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Couvercle adapté aux gobelets 4 oz. Fermeture sécurisée
+                            anti-renversement.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Couvercles%2072mm."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Couvercle 80mm -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.5s;">
+                    <div class="detailed-image">
+                        <img src="assets/couvercle_noir.png" alt="Couvercle noir pour gobelet"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Couvercle 80mm</h3>
+                        <div class="capacity-subtitle">Pour Gobelets 6 oz</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>8 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>80 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>80 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Couvercle adapté aux gobelets 6 oz. Ajustement parfait pour vos
+                            boissons chaudes.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Couvercles%2080mm."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Couvercle 96mm -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.6s;">
+                    <div class="detailed-image">
+                        <img src="assets/couvercle_noir.png" alt="Couvercle noir pour gobelet"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Couvercle 96mm</h3>
+                        <div class="capacity-subtitle">Pour Gobelets 8 oz / 12 oz</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>8 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>96 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>96 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Couvercle adapté aux gobelets 8 à 12 oz. Idéal pour cafés allongés et
+                            lattes.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Couvercles%2096mm."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Couvercle 110mm -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.7s;">
+                    <div class="detailed-image">
+                        <img src="assets/couvercle_noir.png" alt="Couvercle noir pour gobelet"
+                            class="w-full h-full object-contain p-4">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Couvercle 110mm</h3>
+                        <div class="capacity-subtitle">Pour Gobelets 16 oz / 20 oz</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Hauteur:</td>
+                                <td>8 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Haut:</td>
+                                <td>110 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Ø Base:</td>
+                                <td>110 mm</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Couvercle grand format pour les grandes boissons. Parfait pour les
+                            smoothies et frappés.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Couvercles%20110mm."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <!-- Porte-Gobelets 2 -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.8s;">
+                    <div class="detailed-image">
+                        <img src="assets/porte_gobelet_2tasses.jpg" alt="Porte-gobelet carton 2 tasses"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Porte-Gobelets (2 Tasses)</h3>
+                        <div class="capacity-subtitle">Transport Sécurisé</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité:</td>
+                                <td>2 emplacements</td>
+                            </tr>
+                            <tr>
+                                <td>Matériau:</td>
+                                <td>Carton moulé rigide</td>
+                            </tr>
+                            <tr>
+                                <td>Compatibilité:</td>
+                                <td>Du 4 oz au 16 oz</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">L'accessoire indispensable pour la vente à emporter, évitant les
+                            renversements et les brûlures.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Porte-Gobelets%202%20Tasses."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Porte-Gobelets 4 -->
+                <div class="detailed-card fade-in-up" style="transition-delay: 0.9s;">
+                    <div class="detailed-image">
+                        <img src="assets/porte_gobelet_4tasses.jpg" alt="Porte-gobelet carton 4 tasses"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Porte-Gobelets (4 Tasses)</h3>
+                        <div class="capacity-subtitle">Format Groupe</div>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Capacité:</td>
+                                <td>4 emplacements</td>
+                            </tr>
+                            <tr>
+                                <td>Matériau:</td>
+                                <td>Carton moulé très haute résistance</td>
+                            </tr>
+                            <tr>
+                                <td>Design:</td>
+                                <td>Empilable pour optimiser l'espace</td>
+                            </tr>
+                        </table>
+                        <p class="detailed-desc">Parfait pour les commandes multiples. Maintient fermement jusqu'à 4
+                            gobelets de tailles variées.</p>
+                        <a href="https://wa.me/212661177624?text=Bonjour,%20je%20souhaite%20commander%20des%20Porte-Gobelets%204%20Tasses."
+                            target="_blank" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> Commander
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Tableau Comparatif -->
+    <section class="container" style="padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="fade-in-up">
+            <h2
+                style="text-align: center; color: #1a2f4c; font-weight: bold; margin-bottom: 1rem; font-family: var(--font-heading); font-size: 2rem;">
+                Tableau Comparatif</h2>
+            <div style="width: 50px; height: 3px; background-color: #f97316; margin: 0 auto 3rem auto;">
+            </div>
+
+            <div
+                style="overflow-x: auto; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border-radius: 8px;">
+                <table
+                    style="width: 100%; min-width: 600px; border-collapse: collapse; text-align: center; font-family: var(--font-body); background-color: white;">
+                    <thead>
+                        <tr style="background-color: #1a2f4c; color: white;">
+                            <th style="padding: 1rem; font-weight: 600; font-size: 0.9rem;">MODÈLE</th>
+                            <th
+                                style="padding: 1rem; border-left: 1px solid rgba(255,255,255,0.2); font-weight: 600; font-size: 0.9rem;">
+                                CAPACITÉ</th>
+                            <th
+                                style="padding: 1rem; border-left: 1px solid rgba(255,255,255,0.2); font-weight: 600; font-size: 0.9rem;">
+                                DIAMÈTRE HAUT</th>
+                            <th
+                                style="padding: 1rem; border-left: 1px solid rgba(255,255,255,0.2); font-weight: 600; font-size: 0.9rem;">
+                                DIAMÈTRE BASE</th>
+                            <th
+                                style="padding: 1rem; border-left: 1px solid rgba(255,255,255,0.2); font-weight: 600; font-size: 0.9rem;">
+                                HAUTEUR</th>
+                            <th
+                                style="padding: 1rem; border-left: 1px solid rgba(255,255,255,0.2); font-weight: 600; font-size: 0.9rem;">
+                                CONTACT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 1rem; font-weight: 600; color: #1a2f4c;">4 oz</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">100 ml</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">64 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">45 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">60 mm</td>
+                            <td style="padding: 1rem; border-left: 1px solid #e5e7eb;">
+                                <a href="#contact"
+                                    style="color: #f97316; font-weight: 600; text-decoration: none;">Demander</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 1rem; font-weight: 600; color: #1a2f4c;">6 oz</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">150 ml</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">72 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">53 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">80 mm</td>
+                            <td style="padding: 1rem; border-left: 1px solid #e5e7eb;">
+                                <a href="#contact"
+                                    style="color: #f97316; font-weight: 600; text-decoration: none;">Demander</a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 1rem; font-weight: 600; color: #1a2f4c;">8 oz</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">200 ml</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">75 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">53 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">92 mm</td>
+                            <td style="padding: 1rem; border-left: 1px solid #e5e7eb;">
+                                <a href="#contact"
+                                    style="color: #f97316; font-weight: 600; text-decoration: none;">Demander</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: 600; color: #1a2f4c;">12 oz</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">350 ml</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">80 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">53 mm</td>
+                            <td style="padding: 1rem; color: #4b5563; border-left: 1px solid #e5e7eb;">120 mm</td>
+                            <td style="padding: 1rem; border-left: 1px solid #e5e7eb;">
+                                <a href="#contact"
+                                    style="color: #f97316; font-weight: 600; text-decoration: none;">Demander</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="container" style="padding-top: 0;">
+        <div class="category-features fade-in-up">
+            <div class="feature-item">
+                <span class="feature-icon">✨</span>
+                <h3>Qualité Premium</h3>
+                <p>Matériaux robustes et certifiés alimentaires pour une utilisation optimale.</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📏</span>
+                <h3>Formats Variés</h3>
+                <p>Large gamme de tailles pour répondre à tous vos besoins professionnels.</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🚚</span>
+                <h3>Livraison Rapide</h3>
+                <p>Production locale et logistique efficace partout au Maroc.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="tailwind-scope">
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 md:py-32 bg-background">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-body font-medium mb-4">Contact</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">Parlons de votre projet
+                    </h2>
+                    <p class="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
+                        Besoin d'un devis personnalisé ? Contactez-nous et nous vous répondrons dans les plus brefs
+                        délais.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
+                    <div class="lg:col-span-2 flex flex-col gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Email</h4>
+                                <p class="font-body text-sm text-muted-foreground">4cupsmaroc@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Téléphone</h4>
+                                <p class="font-body text-sm text-muted-foreground">+212 661 17 76 24<br />+212 522 33 44
+                                    44</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Adresse</h4>
+                                <p class="font-body text-sm text-muted-foreground">Centre Ville<br />Bouskoura, Maroc
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="lg:col-span-3 flex flex-col gap-5" action="https://formsubmit.co/4cupsmaroc@gmail.com"
+                        method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <input type="text" placeholder="Nom"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="nom" id="nom">
+                            <input type="email" placeholder="Email"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="email" id="email">
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <input type="tel" placeholder="Numéro de téléphone"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="telephone" id="telephone">
+                        </div>
+                        <textarea rows="5" placeholder="Votre message (optionnel)..."
+                            class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                            name="message" id="message"></textarea>
+                        <button type="submit"
+                            class="self-start px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer class="py-12 bg-foreground">
+            <div class="container">
+                <div class="grid md:grid-cols-3 gap-10 mb-10">
+                    <div>
+                        <h3 class="font-heading text-2xl font-bold text-primary-foreground mb-3">4cups</h3>
+                        <p class="font-body text-sm text-primary-foreground/60 max-w-xs leading-relaxed">
+                            Emballages alimentaires de qualité pour les professionnels. Gobelets, pots de glaces,
+                            barquettes
+                            et plus.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-base font-semibold text-primary-foreground mb-4">Liens rapides</h4>
+                        <ul class="flex flex-col gap-2">
+                            <li><a href="index.html"
+                                    class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Accueil</a>
+                            </li>
+                            <li><a href="#apropos"
+                                    class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">À
+                                    propos</a></li>
+                            <li><a href="#contact"
+                                    class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-heading text-base font-semibold text-primary-foreground mb-4">Nous contacter
+                        </h4>
+                        <p class="font-body text-sm text-primary-foreground/60 leading-relaxed">
+                            4cupsmaroc@gmail.com<br />
+                            +212 661 17 76 24<br />
+                            +212 522 33 44 44<br />
+                            Bouskoura, Maroc
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-primary-foreground/10 pt-8 text-center flex flex-col items-center">
+                    <p class="font-body text-xs text-primary-foreground/40 mb-2">
+                        © 2026 4cups. Tous droits réservés.
+                    </p>
+                    <p class="font-body text-xs text-primary-foreground/20">
+                        Créé avec amour pour le Maroc.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const icon = mobileBtn.querySelector("i");
+
+            let isOpen = false;
+            mobileBtn.addEventListener("click", () => {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    mobileMenu.classList.add("show");
+                    icon.setAttribute("data-lucide", "x");
+                } else {
+                    mobileMenu.classList.remove("show");
+                    icon.setAttribute("data-lucide", "menu");
+                }
+                lucide.createIcons();
+            });
+
+            // Close mobile menu when clicking a link
+            const links = mobileMenu.querySelectorAll("a");
+            links.forEach(link => {
+                link.addEventListener("click", () => {
+                    isOpen = false;
+                    mobileMenu.classList.remove("show");
+                    icon.setAttribute("data-lucide", "menu");
+                    lucide.createIcons();
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // /* Tailwind Mobile Menu Logic */
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("tailwind-mobile-btn");
+            const mobileMenu = document.getElementById("tailwind-mobile-menu");
+            if (mobileBtn && mobileMenu) {
+                const icon = mobileBtn.querySelector("i");
+                let isOpen = false;
+                mobileBtn.addEventListener("click", () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.classList.add("show");
+                        if (icon) icon.setAttribute("data-lucide", "x");
+                    } else {
+                        mobileMenu.classList.remove("show");
+                        if (icon) icon.setAttribute("data-lucide", "menu");
+                    }
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

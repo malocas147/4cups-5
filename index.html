@@ -1,0 +1,1812 @@
+﻿<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4cups | Partenaire en Emballage Alimentaire</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ["class"],
+            theme: {
+                container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+                extend: {
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(35 20% 88%)",
+                        input: "hsl(35 20% 88%)",
+                        ring: "hsl(145 35% 32%)",
+                        background: "hsl(40 33% 97%)",
+                        foreground: "hsl(30 10% 15%)",
+                        primary: { DEFAULT: "hsl(145 35% 32%)", foreground: "hsl(40 33% 97%)" },
+                        secondary: { DEFAULT: "hsl(30 30% 88%)", foreground: "hsl(30 10% 15%)" },
+                        muted: { DEFAULT: "hsl(35 20% 92%)", foreground: "hsl(30 8% 50%)" },
+                        accent: { DEFAULT: "hsl(28 60% 58%)", foreground: "hsl(40 33% 97%)" },
+                        card: { DEFAULT: "hsl(40 25% 95%)", foreground: "hsl(30 10% 15%)" },
+                    },
+                    borderRadius: { lg: "0.75rem", md: "calc(0.75rem - 2px)", sm: "calc(0.75rem - 4px)" },
+                    animation: {
+                        "marquee": "marquee 8s linear infinite",
+                        "marquee-reverse": "marquee-reverse 8s linear infinite",
+                    },
+                    keyframes: {
+                        marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
+                        "marquee-reverse": { "0%": { transform: "translateX(-50%)" }, "100%": { transform: "translateX(0)" } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+      * { @apply border-border; }
+      body { @apply bg-background text-foreground font-body antialiased; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    }
+    html { scroll-behavior: smooth; }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+  </style>
+    <style>
+        /* Force marquee speed — bypass Tailwind CDN cache */
+        .animate-marquee {
+            animation: marquee 10s linear infinite !important;
+        }
+
+        .animate-marquee-reverse {
+            animation: marquee-reverse 10s linear infinite !important;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marquee-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive logo */
+        @media (min-width: 768px) {
+            #nav-logo {
+                height: 4.5rem;
+            }
+        }
+    </style>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen bg-background">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div class="container flex items-center justify-between h-16 md:h-20">
+            <a href="index.html" class="flex items-center" style="height: 100%; overflow: hidden;">
+                <img src="assets/logo.png" alt="4CUPS Logo" id="nav-logo"
+                    style="height: 3rem; width: auto; object-fit: contain;">
+            </a>
+
+            <!-- Desktop -->
+            <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+                <li><a href="index.html"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Accueil</a>
+                </li>
+                <li><a href="cafe.html"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Café</a>
+                </li>
+                <li><a href="restaurants.html"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Restaurants</a>
+                </li>
+                <li><a href="fast-food.html"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Fast-Food</a>
+                </li>
+                <li><a href="glaciers.html"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Glaciers</a>
+                </li>
+                <li><a href="#realisations"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Réalisations</a>
+                </li>
+                <li><a href="#contact"
+                        class="font-body text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                </li>
+                <li>
+                    <a href="#contact"
+                        class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
+                        Demander un devis
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Mobile toggle -->
+            <button id="tailwind-mobile-btn" class="md:hidden text-foreground" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="tailwind-mobile-menu"
+            class="hidden md:hidden bg-background border-b border-border overflow-hidden transition-all duration-300">
+            <ul class="flex flex-col gap-4 px-6 py-6 border-t border-border list-none m-0 p-0">
+                <li><a href="index.html"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Accueil</a>
+                </li>
+                <li><a href="cafe.html"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Café</a></li>
+                <li><a href="restaurants.html"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Restaurants</a>
+                </li>
+                <li><a href="fast-food.html"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Fast-Food</a>
+                </li>
+                <li><a href="glaciers.html"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Glaciers</a>
+                </li>
+                <li><a href="#realisations"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Réalisations</a>
+                </li>
+                <li><a href="#contact"
+                        class="font-body text-base text-foreground hover:text-primary transition-colors">Contact</a>
+                </li>
+                <li>
+                    <a href="#contact"
+                        class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                        Demander un devis
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="accueil" class="relative min-h-screen flex items-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="assets/hero-accueil.jpg" alt="Emballages alimentaires 4cups"
+                    class="w-full h-full object-cover" loading="eager" />
+                <div class="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent">
+                </div>
+            </div>
+
+            <div class="container relative z-10 pt-24 pb-16">
+                <div class="max-w-2xl transform transition-all duration-1000 translate-y-0 opacity-100">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground text-sm font-body font-medium mb-6 backdrop-blur-sm border border-primary/30">
+                        Emballage alimentaire de qualité
+                    </span>
+                    <h1
+                        class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground leading-tight mb-4">
+                        L'emballage qui<br /><span class="text-accent">sublime</span> vos produits
+                    </h1>
+                    <p class="text-2xl text-accent font-heading font-bold italic mb-6">
+                        Premier fabricant de gobelets en carton personnalisés au Maroc.
+                    </p>
+                    <p class="text-lg md:text-xl text-primary-foreground/80 font-body max-w-lg mb-8 leading-relaxed">
+                        Gobelets, pots de glaces, barquettes et bien plus. Des solutions d'emballage alimentaire pensées
+                        pour les professionnels.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#gammes"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-body font-semibold text-base hover:opacity-90 transition-opacity">
+                            Découvrir nos produits
+                        </a>
+                        <a href="#contact"
+                            class="inline-flex items-center justify-center px-8 py-3.5 rounded-full border-2 border-primary-foreground/30 text-primary-foreground font-body font-semibold text-base hover:bg-primary-foreground/10 transition-colors backdrop-blur-sm">
+                            Nous contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients Section -->
+        <section class="py-20 bg-secondary/50 overflow-hidden">
+            <div class="container mx-auto px-4 text-center mb-12">
+                <span
+                    class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-medium mb-4">Références</span>
+                <h2 class="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">Ils nous font confiance
+                </h2>
+                <p class="text-muted-foreground text-lg max-w-xl mx-auto">Des entreprises à travers tout le Maroc nous
+                    confient la production de leurs emballages.</p>
+            </div>
+
+            <div class="relative">
+                <div class="flex animate-marquee gap-6">
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-1.svg" alt="Logo Oliveri"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-2.png" alt="Logo Cafe Carrion"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-3.jpg" alt="Logo Picks"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-4.png" alt="Logo La Grillardiere"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-5-v2.png" alt="Logo Nori"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-6.png" alt="Logo Zushi"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-7.png" alt="Logo Blueberry"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-8.webp" alt="Logo Al Itkane"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-9.jpg" alt="Logo Gelato Lab"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-10.png" alt="Logo Adoro Cafe"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-12.png" alt="Logo Café De la Gare"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-13.png" alt="Logo Dahab Café"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-14.png" alt="Logo Shawarma Avenue"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-15.png" alt="Logo Cafe Fast"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-17.png" alt="Logo One Là!!!"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-18.png" alt="Logo Wok You 4"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-1.svg" alt="Logo Oliveri"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-2.png" alt="Logo Cafe Carrion"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-3.jpg" alt="Logo Picks"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-4.png" alt="Logo La Grillardiere"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-5-v2.png" alt="Logo Nori"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-6.png" alt="Logo Zushi"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-7.png" alt="Logo Blueberry"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-8.webp" alt="Logo Al Itkane"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-9.jpg" alt="Logo Gelato Lab"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-10.png" alt="Logo Adoro Cafe"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-12.png" alt="Logo Café De la Gare"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-13.png" alt="Logo Dahab Café"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-14.png" alt="Logo Shawarma Avenue"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-15.png" alt="Logo Cafe Fast"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-17.png" alt="Logo One Là!!!"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-18.png" alt="Logo Wok You 4"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-1.svg" alt="Logo Oliveri"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-2.png" alt="Logo Cafe Carrion"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-3.jpg" alt="Logo Picks"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-4.png" alt="Logo La Grillardiere"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-5-v2.png" alt="Logo Nori"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-6.png" alt="Logo Zushi"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-7.png" alt="Logo Blueberry"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-8.webp" alt="Logo Al Itkane"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-9.jpg" alt="Logo Gelato Lab"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-10.png" alt="Logo Adoro Cafe"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-12.png" alt="Logo Café De la Gare"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-13.png" alt="Logo Dahab Café"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-14.png" alt="Logo Shawarma Avenue"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-15.png" alt="Logo Cafe Fast"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-17.png" alt="Logo One Là!!!"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-18.png" alt="Logo Wok You 4"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative mt-6">
+                <div class="flex animate-marquee-reverse gap-6">
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-9.jpg" alt="Logo Gelato Lab"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-10.png" alt="Logo Adoro Cafe"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-12.png" alt="Logo Café De la Gare"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-13.png" alt="Logo Dahab Café"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-14.png" alt="Logo Shawarma Avenue"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-15.png" alt="Logo Cafe Fast"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-17.png" alt="Logo One Là!!!"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-18.png" alt="Logo Wok You 4"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-1.svg" alt="Logo Oliveri"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-2.png" alt="Logo Cafe Carrion"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-3.jpg" alt="Logo Picks"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-4.png" alt="Logo La Grillardiere"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-5-v2.png" alt="Logo Nori"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-6.png" alt="Logo Zushi"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-7.png" alt="Logo Blueberry"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-8.webp" alt="Logo Al Itkane"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-9.jpg" alt="Logo Gelato Lab"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-10.png" alt="Logo Adoro Cafe"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-12.png" alt="Logo Café De la Gare"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-13.png" alt="Logo Dahab Café"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-14.png" alt="Logo Shawarma Avenue"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-15.png" alt="Logo Cafe Fast"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-17.png" alt="Logo One Là!!!"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-18.png" alt="Logo Wok You 4"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-1.svg" alt="Logo Oliveri"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-2.png" alt="Logo Cafe Carrion"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-3.jpg" alt="Logo Picks"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-4.png" alt="Logo La Grillardiere"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-5-v2.png" alt="Logo Nori"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-6.png" alt="Logo Zushi"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-7.png" alt="Logo Blueberry"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-8.webp" alt="Logo Al Itkane"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-9.jpg" alt="Logo Gelato Lab"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-10.png" alt="Logo Adoro Cafe"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-12.png" alt="Logo Café De la Gare"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-13.png" alt="Logo Dahab Café"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-14.png" alt="Logo Shawarma Avenue"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-15.png" alt="Logo Cafe Fast"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-17.png" alt="Logo One Là!!!"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-18.png" alt="Logo Wok You 4"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-1.svg" alt="Logo Oliveri"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-2.png" alt="Logo Cafe Carrion"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-3.jpg" alt="Logo Picks"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-4.png" alt="Logo La Grillardiere"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-5-v2.png" alt="Logo Nori"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-6.png" alt="Logo Zushi"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-7.png" alt="Logo Blueberry"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-48 h-24 bg-background border border-border rounded-xl shadow-sm flex items-center justify-center p-4">
+                        <img src="assets/partner-8.webp" alt="Logo Al Itkane"
+                            class="max-w-full max-h-full object-contain transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sectors -->
+        <section id="gammes" class="py-20 md:py-28 bg-background" style="scroll-margin-top: 100px;">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-14">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-medium mb-4">
+                        Nos Services
+                    </span>
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+                        Solutions Personnalisées<br />Pour Chaque Secteur
+                    </h2>
+                    <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+                        Des emballages de qualité supérieure adaptés à vos besoins spécifiques, avec des designs
+                        personnalisés qui reflètent l'identité de votre entreprise.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="cafe.html"
+                        class="group block rounded-2xl overflow-hidden border border-border bg-card hover:shadow-xl transition-all duration-300 pb-4">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="assets/cat-cafes.jpg" alt="Cafés"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent"></div>
+                            <h3 class="absolute bottom-4 left-4 font-heading text-xl font-bold text-primary-foreground">
+                                Cafés</h3>
+                        </div>
+                        <div class="px-4 pt-4">
+                            <p class="text-muted-foreground text-sm font-body">Gobelets personnalisés à votre image</p>
+                        </div>
+                    </a>
+                    <a href="restaurants.html"
+                        class="group block rounded-2xl overflow-hidden border border-border bg-card hover:shadow-xl transition-all duration-300 pb-4">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="assets/cat-restaurants.jpg" alt="Restaurants"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent"></div>
+                            <h3 class="absolute bottom-4 left-4 font-heading text-xl font-bold text-primary-foreground">
+                                Restaurants</h3>
+                        </div>
+                        <div class="px-4 pt-4">
+                            <p class="text-muted-foreground text-sm font-body">Barquettes, bols et porte-sauces</p>
+                        </div>
+                    </a>
+                    <a href="fast-food.html"
+                        class="group block rounded-2xl overflow-hidden border border-border bg-card hover:shadow-xl transition-all duration-300 pb-4">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="assets/cat-fastfood-new.jpg" alt="Fast Food"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent"></div>
+                            <h3 class="absolute bottom-4 left-4 font-heading text-xl font-bold text-primary-foreground">
+                                Fast Food</h3>
+                        </div>
+                        <div class="px-4 pt-4">
+                            <p class="text-muted-foreground text-sm font-body">Emballages rapides et pratiques</p>
+                        </div>
+                    </a>
+                    <a href="glaciers.html"
+                        class="group block rounded-2xl overflow-hidden border border-border bg-card hover:shadow-xl transition-all duration-300 pb-4">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="assets/cat-glaciers.jpg" alt="Glaciers"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent"></div>
+                            <h3 class="absolute bottom-4 left-4 font-heading text-xl font-bold text-primary-foreground">
+                                Glaciers</h3>
+                        </div>
+                        <div class="px-4 pt-4">
+                            <p class="text-muted-foreground text-sm font-body">Pots de glace et cuillères</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section id="apropos" class="py-24 bg-secondary/50 md:py-[108px]">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span
+                            class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-medium mb-4">
+                            À propos
+                        </span>
+                        <h2 class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
+                            Spécialiste en<br />Emballages Alimentaires
+                        </h2>
+                        <p class="text-muted-foreground font-body text-lg leading-relaxed mb-6">
+                            <strong class="text-foreground">Équipements, Dynamisme, Expérience et Qualification</strong>
+                            sont les termes qui démontrent notre implication sur nos principaux marchés : cafés,
+                            glaciers, restaurants, snacks, fast food et secteur CHR.
+                        </p>
+                        <p class="text-muted-foreground font-body text-base leading-relaxed mb-6">
+                            En tant que spécialiste du secteur des emballages alimentaires, nous avons acquis une
+                            excellente réputation auprès de nos clients et partenaires commerciaux grâce à un service
+                            exemplaire et des solutions d'emballage innovantes.
+                        </p>
+                        <p class="text-muted-foreground font-body text-base leading-relaxed">
+                            Notre créativité et notre flexibilité pour produire des emballages alimentaires
+                            personnalisés et écologiques répondent aux besoins croissants de nos clients en matière de
+                            packaging professionnel.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div
+                            class="p-6 rounded-2xl bg-background border border-border hover:shadow-lg transition-shadow duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                                <i data-lucide="leaf" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <h3 class="font-heading text-lg font-semibold text-foreground mb-2">Éco-responsable</h3>
+                            <p class="font-body text-sm text-muted-foreground">Emballages personnalisés et écologiques
+                                pour un impact réduit.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl bg-background border border-border hover:shadow-lg transition-shadow duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <h3 class="font-heading text-lg font-semibold text-foreground mb-2">Qualité certifiée</h3>
+                            <p class="font-body text-sm text-muted-foreground">Service exemplaire et solutions
+                                d'emballage innovantes.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl bg-background border border-border hover:shadow-lg transition-shadow duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                                <i data-lucide="zap" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <h3 class="font-heading text-lg font-semibold text-foreground mb-2">Dynamisme</h3>
+                            <p class="font-body text-sm text-muted-foreground">Créativité et flexibilité pour répondre à
+                                tous vos besoins.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl bg-background border border-border hover:shadow-lg transition-shadow duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                                <i data-lucide="award" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <h3 class="font-heading text-lg font-semibold text-foreground mb-2">Expérience</h3>
+                            <p class="font-body text-sm text-muted-foreground">Une réputation d'excellence auprès de nos
+                                clients et partenaires.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personnalisation Section -->
+        <section id="personnalisation" class="py-24 bg-background">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                    <!-- Image -->
+                    <div class="relative order-2 lg:order-1">
+                        <!-- Decorative background blob -->
+                        <div class="absolute -right-8 -bottom-8 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+                        <div class="absolute -left-8 -top-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+
+                        <div class="relative bg-secondary/30 rounded-3xl p-8 md:p-12 overflow-hidden group">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 h-1/2 bg-[#7aa0b8] rounded-t-[50%] z-0 translate-y-12">
+                            </div>
+                            <img src="assets/personnalisation-cup.jpg?v=1" alt="Exemple de gobelet personnalisé 4cups"
+                                class="relative z-10 w-full max-w-md mx-auto aspect-[4/5] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700"
+                                onerror="this.src='https://placehold.co/600x800/f8fafc/1e293b?text=Image+Gobelet'" />
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="order-1 lg:order-2">
+                        <span
+                            class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-body font-medium mb-4">
+                            Sur-mesure
+                        </span>
+
+                        <h2 class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
+                            Personnalisez <span class="text-primary italic">Vos Emballages</span>
+                        </h2>
+
+                        <p class="text-lg text-muted-foreground font-body mb-10 leading-relaxed">
+                            Créez une présentation unique qui reflète parfaitement l'identité de votre marque et marque
+                            les esprits de vos clients.
+                        </p>
+
+                        <div class="space-y-6">
+                            <!-- Point 1 -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                    <i data-lucide="palette" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-heading font-bold text-foreground mb-1">Ajout de logos</h3>
+                                    <p class="text-muted-foreground font-body">Intégration parfaite de votre identité
+                                        visuelle.</p>
+                                </div>
+                            </div>
+
+                            <!-- Point 2 -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                                    <i data-lucide="droplet" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-heading font-bold text-foreground mb-1">Choix de couleurs
+                                    </h3>
+                                    <p class="text-muted-foreground font-body">Une palette illimitée pour respecter
+                                        votre charte graphique.</p>
+                                </div>
+                            </div>
+
+                            <!-- Point 3 -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                    <i data-lucide="ruler" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-heading font-bold text-foreground mb-1">Formats sur mesure
+                                    </h3>
+                                    <p class="text-muted-foreground font-body">Des dimensions exactes adaptées à vos
+                                        produits.</p>
+                                </div>
+                            </div>
+
+                            <!-- Point 4 -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-heading font-bold text-foreground mb-1">Design personnalisé
+                                    </h3>
+                                    <p class="text-muted-foreground font-body">Un accompagnement pour un rendu à votre
+                                        image.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10">
+                            <a href="#contact"
+                                class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-foreground text-background font-body font-semibold text-sm hover:bg-foreground/90 transition-colors">
+                                Demander une maquette
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ProcessSteps Section -->
+        <section class="py-20 bg-muted/40">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+                        Votre emballage personnalisé en 5 étapes
+                    </h2>
+                    <p class="text-muted-foreground text-lg">
+                        Démarquez-vous avec des emballages à votre image. Nous imprimons votre logo sur gobelets,
+                        barquettes, bols et pots de glace pour une identité forte.
+                    </p>
+                </div>
+
+                <div class="relative grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-6 mb-14">
+                    <div class="hidden md:block absolute top-14 left-[10%] right-[10%] h-0.5 bg-border z-0"></div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mb-5 relative">
+                            <i data-lucide="message-circle" class="w-10 h-10 text-primary"></i>
+                            <span
+                                class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center shadow">1</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-2">Contactez-nous</h3>
+                        <p class="text-muted-foreground text-sm max-w-[220px]">Prenez contact via notre formulaire ou
+                            par téléphone pour nous parler de votre projet.</p>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mb-5 relative">
+                            <i data-lucide="image" class="w-10 h-10 text-primary"></i>
+                            <span
+                                class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center shadow">2</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-2">Envoyez votre logo</h3>
+                        <p class="text-muted-foreground text-sm max-w-[220px]">Transmettez-nous votre logo et vos
+                            préférences de design pour la personnalisation.</p>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mb-5 relative">
+                            <i data-lucide="calculator" class="w-10 h-10 text-primary"></i>
+                            <span
+                                class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center shadow">3</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-2">Demander un devis</h3>
+                        <p class="text-muted-foreground text-sm max-w-[220px]">Recevez une estimation détaillée adaptée
+                            à vos besoins spécifiques.</p>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mb-5 relative">
+                            <i data-lucide="shopping-cart" class="w-10 h-10 text-primary"></i>
+                            <span
+                                class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center shadow">4</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-2">Passez commande</h3>
+                        <p class="text-muted-foreground text-sm max-w-[220px]">Validez votre commande personnalisée
+                            selon vos besoins en quantité et format.</p>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div
+                            class="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mb-5 relative">
+                            <i data-lucide="party-popper" class="w-10 h-10 text-primary"></i>
+                            <span
+                                class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center shadow">5</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-2">Réception</h3>
+                        <p class="text-muted-foreground text-sm max-w-[220px]">Recevez vos emballages à votre image,
+                            prêts à l'emploi et livrés dans les délais.</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="#contact"
+                        class="inline-flex justify-center items-center px-8 py-3.5 rounded-md bg-primary text-primary-foreground text-base font-semibold hover:bg-primary/90 transition-colors">
+                        Demander un devis
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Expertise Section -->
+        <section class="py-24 bg-background border-t border-border">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-medium mb-4">Notre
+                        Différence</span>
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">Qu'est-ce qui nous
+                        distingue ?</h2>
+                    <p class="text-xl md:text-2xl font-semibold text-primary max-w-3xl mx-auto italic mb-4">
+                        "Le premier Fabricant de gobelets en carton personnalisés au Maroc"
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group text-center">
+                        <div
+                            class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500">
+                        </div>
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 mx-auto relative z-10">
+                            <i data-lucide="award" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-3 relative z-10">Notre
+                            Expertise</h3>
+                        <p class="font-body text-muted-foreground leading-relaxed relative z-10">Pionniers dans la
+                            fabrication d'emballages personnalisés au Maroc avec un savoir-faire inégalé et des
+                            installations de pointe.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div
+                        class="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group text-center">
+                        <div
+                            class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500">
+                        </div>
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 mx-auto relative z-10">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-3 relative z-10">Qualité
+                            Supérieure</h3>
+                        <p class="font-body text-muted-foreground leading-relaxed relative z-10">Des matériaux
+                            rigoureusement sélectionnés et certifiés alimentaires pour des gobelets robustes, étanches
+                            et premium.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div
+                        class="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group text-center">
+                        <div
+                            class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-500">
+                        </div>
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 mx-auto relative z-10">
+                            <i data-lucide="zap" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold text-foreground mb-3 relative z-10">Processus
+                            Efficace</h3>
+                        <p class="font-body text-muted-foreground leading-relaxed relative z-10">Une chaîne de
+                            production optimisée garantissant des délais de livraison extrêmement rapides et un service
+                            client réactif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Instagram Reels Carousel Section -->
+        <section class="py-20 bg-background overflow-hidden relative border-t border-border" id="reels-section">
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/2">
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-body font-medium mb-4">En
+                        action</span>
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">Nos emballages chez
+                        Zushi Marrakech</h2>
+                    <p class="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
+                        Découvrez comment nos emballages personnalisés subliment les créations de nos partenaires. Une
+                        qualité qui se voit à chaque commande.
+                    </p>
+                </div>
+
+                <!-- Horizontal Scrolling Carousel Container -->
+                <div class="w-full overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
+                    <div class="flex gap-6 w-max mx-auto px-4">
+
+                        <!-- Reel 1 -->
+                        <div class="snap-center shrink-0 w-[300px] md:w-[320px]">
+                            <div
+                                class="relative w-full aspect-[9/16] rounded-[2rem] overflow-hidden shadow-xl bg-muted/20 border border-border/50 bg-white">
+                                <iframe src="https://www.instagram.com/p/DVUHH25mq6c/embed" width="100%" height="100%"
+                                    frameborder="0" scrolling="no" allowtransparency="true"
+                                    class="absolute inset-0 w-full h-full object-cover"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Reel 2 -->
+                        <div class="snap-center shrink-0 w-[300px] md:w-[320px]">
+                            <div
+                                class="relative w-full aspect-[9/16] rounded-[2rem] overflow-hidden shadow-xl bg-muted/20 border border-border/50 bg-white">
+                                <iframe src="https://www.instagram.com/p/DVOlhruiS0E/embed" width="100%" height="100%"
+                                    frameborder="0" scrolling="no" allowtransparency="true"
+                                    class="absolute inset-0 w-full h-full object-cover"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Reel 3 -->
+                        <div class="snap-center shrink-0 w-[300px] md:w-[320px]">
+                            <div
+                                class="relative w-full aspect-[9/16] rounded-[2rem] overflow-hidden shadow-xl bg-muted/20 border border-border/50 bg-white">
+                                <iframe src="https://www.instagram.com/p/DU3rcQjjszL/embed" width="100%" height="100%"
+                                    frameborder="0" scrolling="no" allowtransparency="true"
+                                    class="absolute inset-0 w-full h-full object-cover"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Reel 4 -->
+                        <div class="snap-center shrink-0 w-[300px] md:w-[320px]">
+                            <div
+                                class="relative w-full aspect-[9/16] rounded-[2rem] overflow-hidden shadow-xl bg-muted/20 border border-border/50 bg-white">
+                                <iframe src="https://www.instagram.com/p/DVCCHjfAIE2/embed" width="100%" height="100%"
+                                    frameborder="0" scrolling="no" allowtransparency="true"
+                                    class="absolute inset-0 w-full h-full object-cover"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Reel 5 -->
+                        <div class="snap-center shrink-0 w-[300px] md:w-[320px]">
+                            <div
+                                class="relative w-full aspect-[9/16] rounded-[2rem] overflow-hidden shadow-xl bg-muted/20 border border-border/50 bg-white">
+                                <iframe src="https://www.instagram.com/p/DOjOKfxDT6C/embed" width="100%" height="100%"
+                                    frameborder="0" scrolling="no" allowtransparency="true"
+                                    class="absolute inset-0 w-full h-full object-cover"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <a href="https://www.instagram.com/zushi_marrakech/" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full bg-foreground text-background font-body font-semibold hover:opacity-90 transition-opacity">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                        Voir Zushi sur Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio / Réalisations Section -->
+        <section id="realisations" class="py-24 bg-muted/30 border-t border-border">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-medium mb-4">
+                        Nos Réalisations
+                    </span>
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+                        Nos Produits en Action
+                    </h2>
+                    <p class="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
+                        Découvrez comment nos clients utilisent nos emballages personnalisés pour mettre en valeur
+                        leurs produits et renforcer leur image de marque.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Item 1 -->
+                    <div
+                        class="group realisation-card relative rounded-2xl overflow-hidden cursor-pointer shadow-md bg-white border border-border">
+                        <div
+                            class="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none">
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button
+                            class="realisation-prev absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button
+                            class="realisation-next absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+
+
+                        <div
+                            class="flex realisation-slider scroll-smooth overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full h-[350px]">
+                            <img src="assets/carrion1.jpg" alt="Exemple Gobelet Cafés Carrion avec croissant"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/carrion2.jpg" alt="Porte Gobelet Cafés Carrion 2 Tasses" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/carrion3.jpg" alt="Porte Gobelet Cafés Carrion 4 Tasses" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/example_prod_3cups_new.jpg" alt="Exemples Gobelets personnalisés 4cups"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/example_prod_cup_new.jpg" alt="Exemple Gobelet Cafés Carrion"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/cafe_packaging_1772512616099.png" alt="Gobelets personnalisés pour cafés 1"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/cat-cafes.jpg" alt="Gobelets personnalisés pour cafés 2" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/gobelet_branded_master.png" alt="Gobelets personnalisés pour cafés 3"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none">
+                            <h3 class="text-xl font-heading font-bold text-primary-foreground mb-1">Cafés & Salons
+                            </h3>
+                            <p
+                                class="text-primary-foreground/80 font-body text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                Gobelets professionnels sur-mesure. (Faites défiler)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div
+                        class="group realisation-card relative rounded-2xl overflow-hidden cursor-pointer shadow-md bg-white border border-border lg:mt-8">
+                        <div
+                            class="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none">
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button
+                            class="realisation-prev absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button
+                            class="realisation-next absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+
+
+                        <div
+                            class="flex realisation-slider scroll-smooth overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full h-[350px]">
+                            <img src="assets/ff_example_popcorn.jpg" alt="Boîte popcorn personnalisée" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/restaurant_packaging_1772512646447.png"
+                                alt="Emballages personnalisés pour restaurants 1" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/cat-restaurants.jpg" alt="Emballages personnalisés pour restaurants 2"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none">
+                            <h3 class="text-xl font-heading font-bold text-primary-foreground mb-1">Restaurants</h3>
+                            <p
+                                class="text-primary-foreground/80 font-body text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                Barquettes et bols à l'image du chef. (Faites défiler)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div
+                        class="group realisation-card relative rounded-2xl overflow-hidden cursor-pointer shadow-md bg-white border border-border">
+                        <div
+                            class="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none">
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button
+                            class="realisation-prev absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button
+                            class="realisation-next absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+
+
+                        <div
+                            class="flex realisation-slider scroll-smooth overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full h-[350px]">
+                            <img src="assets/ff_example_frybox.jpg" alt="Barquette frites Num's Way personnalisée"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/fast_food_packaging_1772512631269.png" alt="Emballages pour fast-food 1"
+                                loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/cat-fastfood.jpg" alt="Emballages pour fast-food 2" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/cat-fastfood-new.jpg" alt="Emballages pour fast-food 3" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none">
+                            <h3 class="text-xl font-heading font-bold text-primary-foreground mb-1">Fast-Food</h3>
+                            <p
+                                class="text-primary-foreground/80 font-body text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                Packs astucieux et attractifs. (Faites défiler)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div
+                        class="group realisation-card relative rounded-2xl overflow-hidden cursor-pointer shadow-md bg-white border border-border lg:mt-8">
+                        <div
+                            class="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none">
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button
+                            class="realisation-prev absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button
+                            class="realisation-next absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/90 shadow-md flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white focus:outline-none">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+
+
+                        <div
+                            class="flex realisation-slider scroll-smooth overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full h-[350px]">
+                            <img src="assets/glacier_packaging_1772512662364.png"
+                                alt="Pots personnalisés pour glaciers 1" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                            <img src="assets/cat-glaciers.jpg" alt="Pots personnalisés pour glaciers 2" loading="lazy"
+                                class="w-full h-full object-cover flex-shrink-0 snap-center group-hover:scale-105 transition-transform duration-700" />
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none">
+                            <h3 class="text-xl font-heading font-bold text-primary-foreground mb-1">Glaciers</h3>
+                            <p
+                                class="text-primary-foreground/80 font-body text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                Des pots vibrants pour vos douceurs. (Faites défiler)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-primary text-primary font-body font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+                        Vous voulez un résultat similaire ?
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CtaBanner Section (Moved here) -->
+        <section class="relative py-20 bg-primary overflow-hidden md:py-[100px]">
+            <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary-foreground/5"></div>
+            <div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-primary-foreground/5"></div>
+
+            <div class="container mx-auto px-4 relative z-10 text-center max-w-3xl">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+                    Votre Gobelet,<br />Votre Identité
+                </h2>
+                <p class="text-primary-foreground/80 text-lg font-body mb-4">
+                    Fabrication & impression haut de gamme de gobelets professionnels. Personnalisez vos emballages avec
+                    votre logo pour une image de marque forte.
+                </p>
+                <div class="flex items-center justify-center gap-2 text-primary-foreground/70 text-sm font-body mb-8">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                    <span>Basés à Bouskoura — Livraison dans tout le Maroc</span>
+                </div>
+                <a href="#contact"
+                    class="inline-flex justify-center items-center px-8 py-3.5 rounded-md bg-secondary text-secondary-foreground text-base font-semibold hover:bg-secondary/80 transition-colors">
+                    Contactez-nous
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-secondary/50">
+            <div class="container max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-body font-medium mb-4">
+                        Des questions ?
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
+                        Foire Aux Questions
+                    </h2>
+                    <p class="text-muted-foreground font-body text-lg">
+                        Retrouvez les réponses aux questions les plus fréquentes sur nos produits et services.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div
+                        class="bg-background border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <h3
+                            class="text-xl font-heading font-bold text-foreground mb-2 flex items-center justify-between">
+                            Quel est le minimum de commande pour la personnalisation ?
+                        </h3>
+                        <p class="text-muted-foreground font-body leading-relaxed">
+                            Pour la majorité de nos produits (gobelets, barquettes), le minimum de commande (MOQ) pour
+                            la personnalisation avec votre logo est de 10 000 pièces.
+                        </p>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div
+                        class="bg-background border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <h3
+                            class="text-xl font-heading font-bold text-foreground mb-2 flex items-center justify-between">
+                            Livrez-vous partout au Maroc ?
+                        </h3>
+                        <p class="text-muted-foreground font-body leading-relaxed">
+                            Absolument ! Nous produisons localement à Casablanca (Bouskoura) et nous assurons la
+                            logistique sur l'ensemble du territoire marocain.
+                        </p>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div
+                        class="bg-background border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <h3
+                            class="text-xl font-heading font-bold text-foreground mb-2 flex items-center justify-between">
+                            Quels sont les délais de production ?
+                        </h3>
+                        <p class="text-muted-foreground font-body leading-relaxed">
+                            Une fois le BAT (Bon À Tirer) validé et l'acompte réglé, le délai moyen de production est de
+                            7 à 10 jours ouvrables. Vous serez tenu informé à chaque étape.
+                        </p>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div
+                        class="bg-background border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <h3
+                            class="text-xl font-heading font-bold text-foreground mb-2 flex items-center justify-between">
+                            Vos emballages sont-ils recyclables / écologiques ?
+                        </h3>
+                        <p class="text-muted-foreground font-body leading-relaxed">
+                            Oui, nos emballages en papier kraft et papier alimentaire sont fabriqués à partir de
+                            matériaux durables et certifiés, répondant aux normes de respect de l'environnement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 md:py-32 bg-background">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-body font-medium mb-4">Contact</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">Parlons de votre projet
+                    </h2>
+                    <p class="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
+                        Besoin d'un devis personnalisé ? Contactez-nous et nous vous répondrons dans les plus brefs
+                        délais.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
+                    <div class="lg:col-span-2 flex flex-col gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Email</h4>
+                                <p class="font-body text-sm text-muted-foreground">4cupsmaroc@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Téléphone</h4>
+                                <p class="font-body text-sm text-muted-foreground">+212 661 17 76 24<br />+212 522 33 44
+                                    44</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-foreground mb-1">Adresse</h4>
+                                <p class="font-body text-sm text-muted-foreground">Centre Ville<br />Bouskoura, Maroc
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="lg:col-span-3 flex flex-col gap-5" action="https://formsubmit.co/4cupsmaroc@gmail.com"
+                        method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <input type="text" placeholder="Nom"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="nom" id="nom">
+                            <input type="email" placeholder="Email"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="email" id="email">
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <input type="tel" placeholder="Numéro de téléphone"
+                                class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                required / name="telephone" id="telephone">
+                        </div>
+                        <textarea rows="5" placeholder="Votre message (optionnel)..."
+                            class="w-full px-5 py-3 rounded-xl bg-card border border-border text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                            name="message" id="message"></textarea>
+                        <button type="submit"
+                            class="self-start px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 bg-foreground">
+        <div class="container">
+            <div class="grid md:grid-cols-3 gap-10 mb-10">
+                <div>
+                    <h3 class="font-heading text-2xl font-bold text-primary-foreground mb-3">4cups</h3>
+                    <p class="font-body text-sm text-primary-foreground/60 max-w-xs leading-relaxed">
+                        Emballages alimentaires de qualité pour les professionnels. Gobelets, pots de glaces, barquettes
+                        et plus.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-heading text-base font-semibold text-primary-foreground mb-4">Liens rapides</h4>
+                    <ul class="flex flex-col gap-2">
+                        <li><a href="index.html"
+                                class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Accueil</a>
+                        </li>
+                        <li><a href="#apropos"
+                                class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">À
+                                propos</a></li>
+                        <li><a href="#contact"
+                                class="font-body text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-base font-semibold text-primary-foreground mb-4">Nous contacter</h4>
+                    <p class="font-body text-sm text-primary-foreground/60 leading-relaxed">
+                        4cupsmaroc@gmail.com<br />
+                        +212 661 17 76 24<br />
+                        +212 522 33 44 44<br />
+                        Bouskoura, Maroc
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-primary-foreground/10 pt-8 text-center flex flex-col items-center">
+                <p class="font-body text-xs text-primary-foreground/40 mb-2">
+                    © 2026 4cups. Tous droits réservés.
+                </p>
+                <p class="font-body text-xs text-primary-foreground/20">
+                    Créé avec amour pour le Maroc.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const icon = mobileBtn.querySelector("i");
+
+            let isOpen = false;
+            mobileBtn.addEventListener("click", () => {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    mobileMenu.classList.remove("hidden");
+                    icon.setAttribute("data-lucide", "x");
+                } else {
+                    mobileMenu.classList.add("hidden");
+                    icon.setAttribute("data-lucide", "menu");
+                }
+                lucide.createIcons();
+            });
+
+            // Close mobile menu when clicking a link
+            const links = mobileMenu.querySelectorAll("a");
+            links.forEach(link => {
+                addEventListener("click", () => {
+                    isOpen = false;
+                    mobileMenu.classList.add("hidden");
+                    icon.setAttribute("data-lucide", "menu");
+                    lucide.createIcons();
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // /* Tailwind Mobile Menu Logic */
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("tailwind-mobile-btn");
+            const mobileMenu = document.getElementById("tailwind-mobile-menu");
+            if (mobileBtn && mobileMenu) {
+                const icon = mobileBtn.querySelector("i");
+                let isOpen = false;
+                mobileBtn.addEventListener("click", () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.classList.remove("hidden");
+                        if (icon) icon.setAttribute("data-lucide", "x");
+                    } else {
+                        mobileMenu.classList.add("hidden");
+                        if (icon) icon.setAttribute("data-lucide", "menu");
+                    }
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll(".realisation-card");
+            let globalAutoScrollInterval;
+
+            // Scroll a specific slider to the next image
+            const scrollNextSlider = (slider) => {
+                if (!slider) return;
+                const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                if (slider.scrollLeft >= maxScrollLeft - 10) {
+                    slider.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                    slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+                }
+            };
+
+            // Scroll a specific slider to the previous image
+            const scrollPrevSlider = (slider) => {
+                if (!slider) return;
+                if (slider.scrollLeft <= 10) {
+                    slider.scrollTo({ left: slider.scrollWidth, behavior: "smooth" });
+                } else {
+                    slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+                }
+            };
+
+            // Scroll all sliders at once
+            const scrollAllNext = () => {
+                cards.forEach(card => {
+                    const slider = card.querySelector(".realisation-slider");
+                    scrollNextSlider(slider);
+                });
+            };
+
+            const startGlobalInterval = () => {
+                if (globalAutoScrollInterval) {
+                    clearInterval(globalAutoScrollInterval);
+                }
+                globalAutoScrollInterval = setInterval(scrollAllNext, 1700); // 1.7 seconds
+            };
+
+            const stopGlobalInterval = () => {
+                if (globalAutoScrollInterval) {
+                    clearInterval(globalAutoScrollInterval);
+                    globalAutoScrollInterval = null;
+                }
+            };
+
+            cards.forEach(card => {
+                const slider = card.querySelector(".realisation-slider");
+                const prevBtn = card.querySelector(".realisation-prev");
+                const nextBtn = card.querySelector(".realisation-next");
+
+                if (nextBtn) nextBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    scrollNextSlider(slider);
+                    startGlobalInterval(); // Reset timer so they all stay in sync
+                });
+
+                if (prevBtn) prevBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    scrollPrevSlider(slider);
+                    startGlobalInterval(); // Reset timer so they all stay in sync
+                });
+
+                card.addEventListener("mouseenter", stopGlobalInterval);
+                card.addEventListener("mouseleave", startGlobalInterval);
+
+                // Touch events for mobile
+                card.addEventListener("touchstart", stopGlobalInterval, { passive: true });
+                card.addEventListener("touchend", startGlobalInterval, { passive: true });
+            });
+
+            // Observers: pause animation if the 'realisations' section is not visible
+            const realisationsSection = document.getElementById("realisations");
+            if (realisationsSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            startGlobalInterval();
+                        } else {
+                            stopGlobalInterval();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(realisationsSection);
+            } else {
+                startGlobalInterval();
+            }
+        });
+    </script>
+
+</body>
+
+
+</html>
